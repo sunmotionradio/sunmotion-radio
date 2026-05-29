@@ -519,7 +519,7 @@ function extractImage(item){
   if(item.enclosure&&item.enclosure.link)return item.enclosure.link;
   const html=item.content||item.description||"";
   const match=html.match(/<img[^>]+src=["']([^"']+)["']/i);
-  return match?match[1]:"";
+  return match?match[1]:"/assets/blue.png";
 }
 
 function newsTemplate(item){
