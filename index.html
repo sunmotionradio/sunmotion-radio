@@ -374,9 +374,17 @@ html,body{overflow:auto}
 <audio id="radioAudio" src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3"></audio>
 
 <script>
+<script>
+const streamUrl = "https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3";
+const apiUrl = "https://sunmotionradioonline.duckdns.org/api/nowplaying/sunmotionradio";
+
 const audio = document.getElementById("radioAudio");
 const btn = document.getElementById("playBtn");
 const volume = document.getElementById("volume");
+const trackTitle = document.getElementById("trackTitle");
+
+audio.src = streamUrl;
+audio.volume = 0.8;
 
 btn.onclick = () => {
   if (audio.paused) {
@@ -388,8 +396,32 @@ btn.onclick = () => {
   }
 };
 
-volume.oninput = () => audio.volume = volume.value;
-audio.volume = 0.8;
+volume.oninput = () => {
+  audio.volume = volume.value;
+};
+
+async function updateNowPlaying() {
+  try {
+    const response = await fetch(apiUrl + "?t=" + Date.now());
+    const data = await response.json();
+
+    const artist = data?.now_playing?.song?.artist || "";
+    const title = data?.now_playing?.song?.title || "";
+
+    if (artist || title) {
+      trackTitle.textContent =
+        `${artist} - ${title}`.replace(/^ - | - $/g, "");
+    } else {
+      trackTitle.textContent = "SunMotion Radio Live";
+    }
+  } catch (e) {
+    trackTitle.textContent = "SunMotion Radio Live";
+  }
+}
+
+updateNowPlaying();
+setInterval(updateNowPlaying, 15000);
+</script>
 </script>
 
 </body>
