@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SunMotion Radio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;min-height:100%;font-family:Montserrat,sans-serif;color:#fff;background:#02070c;overflow:hidden}
+html,body{width:100%;height:100%;overflow:hidden;font-family:Poppins,sans-serif;color:#fff;background:#02070c}
 
-body::before{
+body:before{
 content:"";
 position:fixed;
 inset:0;
@@ -19,44 +19,42 @@ background:url("assets/blue.png") center center/cover no-repeat;
 z-index:-3;
 }
 
-body::after{
+body:after{
 content:"";
 position:fixed;
 inset:0;
-background:
-linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,28,55,.35),rgba(0,0,0,.72)),
-radial-gradient(circle at 50% 32%,rgba(0,180,255,.25),transparent 42%);
+background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,20,38,.38),rgba(0,0,0,.72));
 z-index:-2;
 }
 
 .topbar{
-height:74px;
+height:70px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:0 30px;
-background:rgba(0,5,12,.78);
-border-bottom:1px solid rgba(0,190,255,.35);
+padding:0 28px;
+background:rgba(0,5,12,.72);
+border-bottom:1px solid rgba(0,190,255,.32);
 backdrop-filter:blur(10px);
 }
 
 .brand{
 display:flex;
 align-items:center;
-gap:14px;
+gap:12px;
 }
 
 .coin{
-width:44px;
-height:44px;
+width:42px;
+height:42px;
 border-radius:50%;
 display:grid;
 place-items:center;
-border:1px solid #11bfff;
-background:radial-gradient(circle,#ffd84a 8%,#0d4b75 45%,#03101c 75%);
-font-size:13px;
+border:1px solid #12c8ff;
+background:radial-gradient(circle,#ffd84a 8%,#0b4b73 45%,#03101c 75%);
+font-size:12px;
 font-weight:900;
-box-shadow:0 0 20px rgba(0,180,255,.55);
+box-shadow:0 0 18px rgba(0,190,255,.6);
 }
 
 .brand-name{
@@ -67,193 +65,194 @@ text-shadow:0 0 12px #000;
 
 .nav{
 display:flex;
-gap:28px;
+gap:25px;
+align-items:center;
 }
 
 .nav a{
-color:#fff;
+color:white;
 text-decoration:none;
 font-size:13px;
 font-weight:900;
 letter-spacing:.03em;
 }
 
-.nav a:hover,.nav a.active{color:#15c9ff}
+.nav a:hover,.nav a.active{color:#13c8ff}
 
 .home{
-height:calc(100vh - 74px);
+height:calc(100vh - 70px);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-padding:20px;
+padding-bottom:18px;
 }
 
 .logo-circle{
-width:390px;
-height:390px;
+width:335px;
+height:335px;
 border-radius:50%;
 border:3px solid #10c8ff;
-background:rgba(0,12,24,.34);
-box-shadow:0 0 48px rgba(0,190,255,.75), inset 0 0 45px rgba(0,150,255,.16);
+background:rgba(0,10,22,.36);
+box-shadow:0 0 46px rgba(0,190,255,.76),inset 0 0 42px rgba(0,160,255,.15);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 position:relative;
-margin-bottom:24px;
+margin-bottom:18px;
 }
 
 .sun{
 position:absolute;
-top:76px;
-font-size:42px;
+top:63px;
+font-size:37px;
 color:#ffd52c;
 filter:drop-shadow(0 0 10px #ffd52c);
 }
 
 .script{
 font-family:"Great Vibes",cursive;
-font-size:84px;
+font-size:72px;
 line-height:.9;
 text-shadow:0 5px 18px #000;
 }
 
 .radio{
-font-size:42px;
+font-size:36px;
 font-weight:900;
 letter-spacing:.22em;
 color:#14c7ff;
 text-shadow:0 0 18px #0dbdff;
-margin-left:18px;
+margin-left:16px;
 }
 
 .beat{
 display:flex;
-gap:6px;
+gap:5px;
 align-items:end;
-height:44px;
-margin-top:12px;
+height:38px;
+margin-top:10px;
 }
 
 .beat span{
-width:10px;
+width:9px;
 background:#14c7ff;
 box-shadow:0 0 12px #14c7ff;
 }
 
-.beat span:nth-child(1){height:12px}
-.beat span:nth-child(2){height:20px}
-.beat span:nth-child(3){height:30px}
-.beat span:nth-child(4){height:42px}
-.beat span:nth-child(5){height:30px}
-.beat span:nth-child(6){height:20px}
-.beat span:nth-child(7){height:12px}
+.beat span:nth-child(1){height:10px}
+.beat span:nth-child(2){height:17px}
+.beat span:nth-child(3){height:26px}
+.beat span:nth-child(4){height:37px}
+.beat span:nth-child(5){height:26px}
+.beat span:nth-child(6){height:17px}
+.beat span:nth-child(7){height:10px}
 
 .tagline{
-font-size:20px;
-margin-bottom:30px;
+font-size:18px;
+margin-bottom:24px;
 text-shadow:0 4px 14px #000;
 }
 
-.tagline span{color:#15c9ff;font-size:26px}
+.tagline span{color:#15c9ff;font-size:23px}
 
 .player{
-width:min(1030px,88vw);
-min-height:120px;
-border-radius:16px;
+width:min(890px,84vw);
+min-height:98px;
+border-radius:15px;
 background:rgba(0,13,27,.76);
 border:1px solid #10bfff;
 box-shadow:0 0 34px rgba(0,160,255,.34), inset 0 0 24px rgba(0,95,170,.18);
 backdrop-filter:blur(12px);
 display:grid;
-grid-template-columns:75px 1fr 170px 210px 90px;
+grid-template-columns:64px 1fr 135px 185px 80px;
 align-items:center;
-gap:22px;
-padding:26px 34px;
+gap:18px;
+padding:20px 26px;
 }
 
 .play{
-width:62px;
-height:62px;
+width:54px;
+height:54px;
 border-radius:50%;
 border:1px solid #10bfff;
 background:rgba(0,45,80,.75);
 color:white;
-font-size:28px;
+font-size:24px;
 cursor:pointer;
 box-shadow:0 0 22px rgba(0,190,255,.55);
 }
 
 .label{
 color:#14c7ff;
-font-size:13px;
+font-size:12px;
 font-weight:900;
 letter-spacing:.15em;
-margin-bottom:8px;
+margin-bottom:6px;
 }
 
 .track{
-font-size:22px;
+font-size:19px;
 font-weight:900;
 line-height:1.15;
 }
 
 .station{
-font-size:14px;
+font-size:13px;
 color:#c7f0ff;
-margin-top:8px;
+margin-top:6px;
 }
 
 .eq{
-height:60px;
+height:50px;
 display:flex;
 align-items:end;
 justify-content:center;
-gap:8px;
+gap:7px;
 }
 
 .eq i{
-width:9px;
+width:8px;
 border-radius:10px;
 background:#13c7ff;
 box-shadow:0 0 15px #13c7ff;
 animation:bounce 1s ease-in-out infinite;
 }
 
-.eq i:nth-child(1){height:20px}
-.eq i:nth-child(2){height:34px}
-.eq i:nth-child(3){height:50px}
-.eq i:nth-child(4){height:58px}
-.eq i:nth-child(5){height:44px}
-.eq i:nth-child(6){height:31px}
-.eq i:nth-child(7){height:24px}
+.eq i:nth-child(1){height:18px}
+.eq i:nth-child(2){height:29px}
+.eq i:nth-child(3){height:42px}
+.eq i:nth-child(4){height:50px}
+.eq i:nth-child(5){height:38px}
+.eq i:nth-child(6){height:28px}
+.eq i:nth-child(7){height:21px}
 
-@keyframes bounce{50%{height:18px;opacity:.6}}
+@keyframes bounce{50%{height:16px;opacity:.6}}
 
 .volume{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 }
 
 input[type=range]{
-width:140px;
+width:120px;
 accent-color:#12c7ff;
 }
 
 .live{
 display:flex;
 align-items:center;
-gap:9px;
-font-size:18px;
+gap:8px;
+font-size:16px;
 font-weight:900;
 color:#18caff;
 }
 
 .live b{
-width:13px;
-height:13px;
+width:12px;
+height:12px;
 border-radius:50%;
 background:#18caff;
 box-shadow:0 0 18px #18caff;
@@ -261,21 +260,22 @@ box-shadow:0 0 18px #18caff;
 
 .quick{
 display:flex;
-gap:24px;
-margin-top:26px;
+gap:20px;
+margin-top:20px;
 }
 
 .quick a{
-width:210px;
-height:96px;
+width:190px;
+height:78px;
 border:1px solid rgba(0,190,255,.75);
-border-radius:14px;
+border-radius:13px;
 background:rgba(0,12,25,.66);
 display:flex;
 align-items:center;
 justify-content:center;
 text-decoration:none;
 color:#14c7ff;
+font-size:14px;
 font-weight:900;
 box-shadow:0 0 22px rgba(0,140,255,.22);
 backdrop-filter:blur(8px);
@@ -283,28 +283,25 @@ backdrop-filter:blur(8px);
 
 .footer{
 position:fixed;
-bottom:18px;
+bottom:12px;
 left:0;
 width:100%;
 text-align:center;
 color:#18caff;
-font-size:24px;
+font-size:22px;
 font-weight:900;
 letter-spacing:.22em;
 text-shadow:0 0 18px #0fb9ff;
 }
 
 @media(max-width:950px){
-.nav{gap:14px;flex-wrap:wrap;justify-content:center}
+html,body{overflow:auto}
 .topbar{height:auto;padding:12px;flex-direction:column;gap:10px}
-.home{height:auto;min-height:100vh;padding-top:35px}
-.player{grid-template-columns:70px 1fr;gap:16px}
+.nav{gap:14px;flex-wrap:wrap;justify-content:center}
+.home{height:auto;min-height:100vh;padding:32px 16px 90px}
+.player{grid-template-columns:60px 1fr;gap:14px}
 .eq,.volume,.live{justify-self:start}
 .quick{flex-wrap:wrap;justify-content:center}
-.logo-circle{width:330px;height:330px}
-.script{font-size:62px}
-.radio{font-size:32px}
-.sun{top:64px}
 }
 </style>
 </head>
@@ -322,7 +319,7 @@ text-shadow:0 0 18px #0fb9ff;
     <a href="#">LISTEN LIVE</a>
     <a href="#">SHOWS</a>
     <a href="#">DJs</a>
-    <a href="#">CHAT</a>
+    <a href="https://xat.com/SunMotion_Radio" target="_blank">CHAT</a>
     <a href="#">PODCAST</a>
     <a href="#">NEWS</a>
     <a href="#">ABOUT</a>
@@ -366,7 +363,7 @@ text-shadow:0 0 18px #0fb9ff;
 
   <div class="quick">
     <a href="#">🎧 &nbsp; LISTEN LIVE</a>
-    <a href="#">💬 &nbsp; LIVE CHAT</a>
+    <a href="https://xat.com/SunMotion_Radio" target="_blank">💬 &nbsp; LIVE CHAT</a>
     <a href="#">🎙️ &nbsp; DJs</a>
     <a href="#">📰 &nbsp; NEWS</a>
   </div>
