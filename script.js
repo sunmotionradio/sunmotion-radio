@@ -1,94 +1,69 @@
-<!doctype html>
-<html lang="ro">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SunMotion Radio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="bg"></div>
-  <div class="shade"></div>
+const STREAM_URL = 'https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3';
+const NOW_PLAYING_URL = 'https://sunmotionradioonline.duckdns.org/api/nowplaying/sunmotionradio';
+const audio = document.getElementById('radioAudio');
+const playBtn = document.getElementById('playBtn');
+const playBtn2 = document.getElementById('playBtn2');
+const playIcon = document.getElementById('playIcon');
+const playIcon2 = document.getElementById('playIcon2');
+const volume = document.getElementById('volume');
+const trackTitle = document.getElementById('trackTitle');
+const trackTitle2 = document.getElementById('trackTitle2');
 
-  <header class="topbar">
-    <a class="brand" href="#home" data-route="home" aria-label="SunMotion Radio Home">
-      <span class="coin">SM</span>
-      <span class="brand-script">SunMotionRadio</span>
-    </a>
-    <nav class="nav" aria-label="Main menu">
-      <a href="#home" data-route="home" class="active">HOME</a>
-      <a href="#listen-live" data-route="listen-live">LISTEN LIVE</a>
-      <a href="#shadows" data-route="shadows">SHADOWS</a>
-      <a href="#djs" data-route="djs">DJs</a>
-      <a href="https://xat.com/SunMotion_Radio" target="_blank" rel="noopener">CHAT</a>
-      <a href="#podcast" data-route="podcast">PODCAST</a>
-      <a href="#news" data-route="news">NEWS</a>
-      <a href="#about" data-route="about">ABOUT</a>
-      <a href="#contact" data-route="contact">CONTACT</a>
-    </nav>
-  </header>
+audio.src = STREAM_URL;
+audio.volume = Number(volume.value);
 
-  <main>
-    <section id="page-home" class="page active-page hero">
-      <div class="logo-mark" aria-label="SunMotion Radio logo">
-        <div class="sun">☀</div>
-        <div class="script">SunMotion</div>
-        <div class="radio">RADIO</div>
-        <div class="beat"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      </div>
+function setPlaying(isPlaying){
+  playIcon.textContent = isPlaying ? 'Ⅱ' : '▶';
+  playIcon2.textContent = isPlaying ? 'Ⅱ' : '▶';
+}
+async function togglePlay(){
+  try{
+    if(audio.paused){
+      audio.load();
+      await audio.play();
+      setPlaying(true);
+    }else{
+      audio.pause();
+      setPlaying(false);
+    }
+  }catch(e){
+    alert('Browserul a blocat pornirea automată. Apasă încă o dată pe play.');
+  }
+}
+playBtn.addEventListener('click', togglePlay);
+playBtn2.addEventListener('click', togglePlay);
+volume.addEventListener('input', e => audio.volume = Number(e.target.value));
+audio.addEventListener('pause', () => setPlaying(false));
+audio.addEventListener('playing', () => setPlaying(true));
 
-      <p class="tagline">Live Music, good vibes &amp; non-stop energy <span>♡</span></p>
+async function updateNowPlaying(){
+  try{
+    const res = await fetch(NOW_PLAYING_URL, { cache: 'no-store' });
+    if(!res.ok) throw new Error('No metadata');
+    const data = await res.json();
+    const song = data?.now_playing?.song;
+    let text = song?.text || [song?.artist, song?.title].filter(Boolean).join(' - ');
+    if(!text || text.trim() === '-') text = 'SunMotion Radio Live';
+    trackTitle.textContent = text;
+    trackTitle2.textContent = text;
+  }catch(e){
+    trackTitle.textContent = 'SunMotion Radio Live';
+    trackTitle2.textContent = 'SunMotion Radio Live';
+  }
+}
+updateNowPlaying();
+setInterval(updateNowPlaying, 15000);
 
-      <div class="player glass" id="mainPlayer">
-        <button class="play" id="playBtn" aria-label="Play radio"><span id="playIcon">▶</span></button>
-        <div class="trackbox">
-          <div class="label">NOW PLAYING</div>
-          <div class="track" id="trackTitle">Se încarcă piesa...</div>
-          <div class="station">SunMotion Radio Live</div>
-        </div>
-        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="volume-wrap">
-          <span class="speaker">🔊</span>
-          <input type="range" id="volume" min="0" max="1" step="0.01" value="0.75" aria-label="Volume" />
-        </div>
-        <div class="live-dot"><b></b> LIVE</div>
-      </div>
-
-      <div class="cards">
-        <a class="card" href="#listen-live" data-route="listen-live"><span>🎧</span><b>LISTEN LIVE</b></a>
-        <a class="card" href="https://xat.com/SunMotion_Radio" target="_blank" rel="noopener"><span>💬</span><b>LIVE CHAT</b></a>
-        <a class="card" href="#djs" data-route="djs"><span>🎙</span><b>DJs</b></a>
-        <a class="card" href="#news" data-route="news"><span>📰</span><b>NEWS</b></a>
-      </div>
-    </section>
-
-    <section id="page-listen-live" class="page inner">
-      <h1>Listen Live</h1>
-      <div class="mini-player glass">
-        <button class="play small" id="playBtn2" aria-label="Play radio"><span id="playIcon2">▶</span></button>
-        <div><div class="label">NOW PLAYING</div><div class="track mini" id="trackTitle2">Se încarcă piesa...</div></div>
-        <div class="live-dot"><b></b> LIVE</div>
-      </div>
-    </section>
-    <section id="page-shadows" class="page inner empty"><h1>Shadows</h1></section>
-    <section id="page-djs" class="page inner empty"><h1>DJs</h1></section>
-    <section id="page-podcast" class="page inner empty"><h1>Podcast</h1></section>
-    <section id="page-news" class="page inner empty"><h1>News</h1></section>
-    <section id="page-about" class="page inner empty"><h1>About</h1></section>
-    <section id="page-contact" class="page inner empty"><h1>Contact</h1></section>
-  </main>
-
-  <footer>
-    <div class="onair">🎙 ON AIR 24/7</div>
-    <small>© 2026 SunMotion Radio. All rights reserved.</small>
-  </footer>
-
-  <audio id="radioAudio" preload="none" crossorigin="anonymous">
-    <source src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3" type="audio/mpeg" />
-  </audio>
-  <script src="script.js"></script>
-</body>
-</html>
+const pages = [...document.querySelectorAll('.page')];
+const navLinks = [...document.querySelectorAll('[data-route]')];
+function showRoute(route){
+  pages.forEach(p => p.classList.toggle('active-page', p.id === `page-${route}`));
+  navLinks.forEach(a => a.classList.toggle('active', a.dataset.route === route && a.closest('.nav')));
+}
+function handleHash(){
+  const route = (location.hash || '#home').replace('#','');
+  const allowed = ['home','listen-live','shadows','djs','podcast','news','about','contact'];
+  showRoute(allowed.includes(route) ? route : 'home');
+}
+window.addEventListener('hashchange', handleHash);
+handleHash();
