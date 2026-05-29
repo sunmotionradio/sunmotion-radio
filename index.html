@@ -1,408 +1,54 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SunMotion Radio</title>
+<!-- CHAT -->
+<section id="chat" class="section">
+  <h2>CHAT LIVE</h2>
+  <p>Intră în comunitatea SunMotion Radio.</p>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050514;
-    color: #fff;
-    overflow-x: hidden;
-}
-
-.hero {
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-    background:
-        linear-gradient(
-            rgba(0, 0, 15, 0.25),
-            rgba(0, 0, 20, 0.55)
-        ),
-        url("assets/radio-bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.header {
-    width: 100%;
-    padding: 38px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 5;
-}
-
-.logo {
-    font-size: 28px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    display: block;
-    font-size: 13px;
-    letter-spacing: 7px;
-    color: #ff2fa7;
-    margin-top: 3px;
-}
-
-.nav {
-    display: flex;
-    gap: 34px;
-}
-
-.nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    opacity: 0.9;
-}
-
-.nav a:hover {
-    color: #ff2fa7;
-}
-
-.content {
-    position: relative;
-    z-index: 5;
-    padding: 90px 8% 0;
-    max-width: 760px;
-}
-
-.content h1 {
-    font-size: clamp(58px, 8vw, 120px);
-    line-height: 0.88;
-    font-weight: 900;
-    letter-spacing: -4px;
-    text-transform: uppercase;
-}
-
-.content h1 span {
-    display: block;
-    background: linear-gradient(90deg, #ff2fa7, #7a5cff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-    margin-top: 32px;
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-.wave {
-    margin-top: 34px;
-    height: 42px;
-    width: 420px;
-    max-width: 100%;
-    background: linear-gradient(90deg, #ff2fa7, #4aa3ff);
-    mask-image: url("data:image/svg+xml,%3Csvg width='420' height='42' viewBox='0 0 420 42' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 21 H80 C90 21 90 4 100 4 C110 4 110 38 120 38 C130 38 130 8 140 8 C150 8 150 34 160 34 C170 34 170 12 180 12 C190 12 190 30 200 30 C210 30 210 6 220 6 C230 6 230 36 240 36 C250 36 250 10 260 10 C270 10 270 31 280 31 C290 31 290 13 300 13 C310 13 310 28 320 28 C330 28 330 16 340 16 C350 16 350 25 360 25 C370 25 370 21 420 21' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E");
-    mask-repeat: no-repeat;
-    mask-size: contain;
-}
-
-.player {
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
-    gap: 22px;
-}
-
-.play-btn {
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(135deg, #ff2fa7, #6b5cff);
-    box-shadow: 0 0 35px rgba(255, 47, 167, 0.45);
-    color: #fff;
-    font-size: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.live-label {
-    color: #ff2fa7;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.station {
-    font-size: 26px;
-    font-weight: 900;
-    margin-top: 6px;
-}
-
-.track {
-    margin-top: 6px;
-    font-size: 15px;
-    color: #d8d8e8;
-}
-
-.cards {
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 95px;
-    z-index: 5;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 35px;
-}
-
-.card {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.12);
-}
-
-.icon {
-    font-size: 34px;
-    color: #ff2fa7;
-}
-
-.card h3 {
-    font-size: 14px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-}
-
-.card p {
-    font-size: 13px;
-    color: #b8b8ca;
-    line-height: 1.5;
-}
-
-.bottom-player {
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    bottom: 24px;
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.equalizer {
-    flex: 1;
-    height: 36px;
-    background: linear-gradient(90deg, transparent, #ff2fa7, #7a5cff, #4aa3ff, transparent);
-    opacity: 0.9;
-    mask-image: repeating-linear-gradient(
-        90deg,
-        black 0 3px,
-        transparent 3px 8px
-    );
-}
-
-.footer-text {
-    font-size: 13px;
-    color: #fff;
-    white-space: nowrap;
-}
-
-@media (max-width: 900px) {
-    .header {
-        flex-direction: column;
-        gap: 22px;
-    }
-
-    .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-    }
-
-    .content {
-        padding-top: 45px;
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    .player {
-        justify-content: center;
-    }
-
-    .cards {
-        position: relative;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        padding: 70px 8% 120px;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .bottom-player {
-        position: fixed;
-        background: rgba(5, 5, 20, 0.8);
-        padding: 12px;
-        border-radius: 18px;
-        backdrop-filter: blur(12px);
-    }
-}
-
-@media (max-width: 600px) {
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .content h1 {
-        letter-spacing: -2px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-
-    <header class="header">
-        <div class="logo">
-            SUNMOTION
-            <span>RADIO</span>
-        </div>
-
-        <nav class="nav">
-            <a href="#">HOME</a>
-            <a href="#">LISTEN LIVE</a>
-            <a href="#">SHOWS</a>
-            <a href="#">DJs</a>
-            <a href="#">CHAT</a>
-            <a href="#">PODCAST</a>
-            <a href="#">NEWS</a>
-            <a href="#">ABOUT</a>
-            <a href="#">CONTACT</a>
-        </nav>
-    </header>
-
-    <main class="content">
-        <h1>
-            MUZICA
-            <span>UNEȘTE</span>
-        </h1>
-
-        <p class="subtitle">Ești exact unde trebuie să fii.</p>
-
-        <div class="wave"></div>
-
-        <div class="player">
-            <button class="play-btn" id="playBtn">▶</button>
-
-            <div>
-                <div class="live-label">ACUM ON AIR</div>
-                <div class="station">SUNMOTION RADIO LIVE</div>
-                <div class="track" id="trackTitle">Se încarcă piesa...</div>
-            </div>
-        </div>
-    </main>
-
-    <div class="cards">
-        <div class="card">
-            <div class="icon">♪</div>
-            <div>
-                <h3>Muzică non-stop</h3>
-                <p>Hituri și piese pentru fiecare stare.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">🎙</div>
-            <div>
-                <h3>Emisiuni live</h3>
-                <p>Show-uri interesante cu DJ pasionați.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">▣</div>
-            <div>
-                <h3>Evenimente</h3>
-                <p>Cele mai tari evenimente și concursuri.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="icon">♡</div>
-            <div>
-                <h3>Comunitate</h3>
-                <p>O comunitate unită de aceeași pasiune.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bottom-player">
-        <div class="footer-text">📡 ON AIR 24/7</div>
-        <div class="equalizer"></div>
-        <div class="footer-text">🔊</div>
-    </div>
-
+  <div class="chat-box">
+    <iframe 
+      src="https://xat.com/embed/chat.php#id=ID_UL_TAU_XAT&gn=NUMELE_TAU_XAT"
+      width="100%"
+      height="520"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+  </div>
 </section>
 
-<audio id="radioPlayer" src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3"></audio>
+<!-- NEWS -->
+<section id="news" class="section">
+  <h2>NEWS</h2>
 
-<script>
-const playBtn = document.getElementById("playBtn");
-const player = document.getElementById("radioPlayer");
-const trackTitle = document.getElementById("trackTitle");
+  <div class="news-grid">
+    <article>
+      <h3>SunMotion Radio este ON AIR</h3>
+      <p>Muzică live, energie bună și vibe-uri pentru fiecare moment.</p>
+    </article>
 
-let isPlaying = false;
+    <article>
+      <h3>Evenimente & DJ Sets</h3>
+      <p>În curând vom anunța emisiuni, invitați și seturi speciale.</p>
+    </article>
 
-playBtn.addEventListener("click", async () => {
-    if (!isPlaying) {
-        await player.play();
-        playBtn.textContent = "❚❚";
-        isPlaying = true;
-    } else {
-        player.pause();
-        playBtn.textContent = "▶";
-        isPlaying = false;
-    }
-});
+    <article>
+      <h3>Comunitatea crește</h3>
+      <p>Ascultătorii SunMotion se adună în chat, live și online.</p>
+    </article>
+  </div>
+</section>
 
-async function loadNowPlaying() {
-    try {
-        const response = await fetch("https://sunmotionradioonline.duckdns.org/api/nowplaying/sunmotionradio");
-        const data = await response.json();
+<!-- ABOUT -->
+<section id="about" class="section">
+  <h2>ABOUT SUNMOTION RADIO</h2>
+  <p>
+    SunMotion Radio este un radio online creat pentru muzică bună,
+    energie, emoție și comunitate. Aici se ascultă live, se simte vibe-ul
+    și se adună oameni care iubesc sunetul.
+  </p>
+</section>
 
-        const artist = data.now_playing?.song?.artist || "";
-        const title = data.now_playing?.song?.title || "";
-
-        if (artist || title) {
-            trackTitle.textContent = `${artist} - ${title}`;
-        } else {
-            trackTitle.textContent = "SunMotion Radio Live";
-        }
-    } catch (error) {
-        trackTitle.textContent = "SunMotion Radio Live";
-    }
-}
-
-loadNowPlaying();
-setInterval(loadNowPlaying, 15000);
-</script>
-
-</body>
-</html>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>CONTACT</h2>
+  <p>Pentru colaborări, mesaje sau propuneri:</p>
+  <p><strong>Email:</strong> contact@radiosunmotion.ro</p>
+</section>
