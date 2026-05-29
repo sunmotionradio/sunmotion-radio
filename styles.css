@@ -4,278 +4,92 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SunMotion Radio</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Inter,sans-serif;
-    background:#02070c;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* FUNDAL */
-.bg{
-    position:fixed;
-    inset:0;
-    background:url('assets/blue.png') center center/cover no-repeat;
-    z-index:-3;
-}
-
-/* OVERLAY ALBASTRU */
-.shade{
-    position:fixed;
-    inset:0;
-    background:
-    linear-gradient(
-        180deg,
-        rgba(0,0,0,.22),
-        rgba(0,20,40,.30) 40%,
-        rgba(0,0,0,.82)
-    );
-    z-index:-2;
-}
-
-.shade::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(
-        circle at center,
-        rgba(0,180,255,.22),
-        transparent 48%
-    );
-}
-
-/* NAVBAR */
-.topbar{
-    height:75px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 35px;
-    background:rgba(0,5,12,.72);
-    border-bottom:1px solid rgba(0,180,255,.25);
-    backdrop-filter:blur(8px);
-}
-
-.logo{
-    font-family:'Great Vibes',cursive;
-    font-size:42px;
-}
-
-.nav{
-    display:flex;
-    gap:28px;
-}
-
-.nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:800;
-    font-size:14px;
-}
-
-.nav a:hover{
-    color:#16c4ff;
-}
-
-/* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-start;
-    padding-top:40px;
-}
-
-/* LOGO CERC */
-.logo-circle{
-    width:420px;
-    height:420px;
-    border-radius:50%;
-    border:3px solid #0dc8ff;
-    background:rgba(0,10,20,.30);
-    box-shadow:
-    0 0 50px rgba(0,183,255,.5),
-    inset 0 0 50px rgba(0,183,255,.15);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-}
-
-.brand{
-    font-family:'Great Vibes',cursive;
-    font-size:95px;
-}
-
-.radio{
-    font-size:42px;
-    font-weight:900;
-    letter-spacing:12px;
-    color:#15c4ff;
-    text-shadow:0 0 20px #15c4ff;
-}
-
-.beat{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.beat span{
-    width:12px;
-    background:#14c2ff;
-    box-shadow:0 0 12px #14c2ff;
-}
-
-.beat span:nth-child(1){height:20px;}
-.beat span:nth-child(2){height:35px;}
-.beat span:nth-child(3){height:55px;}
-.beat span:nth-child(4){height:70px;}
-.beat span:nth-child(5){height:55px;}
-.beat span:nth-child(6){height:35px;}
-.beat span:nth-child(7){height:20px;}
-
-.tagline{
-    margin-top:25px;
-    font-size:26px;
-    text-align:center;
-    text-shadow:0 0 12px black;
-}
-
-.player{
-    margin-top:40px;
-    width:90%;
-    max-width:1100px;
-    padding:28px;
-    border-radius:18px;
-    background:rgba(0,12,24,.70);
-    border:1px solid rgba(0,183,255,.6);
-    backdrop-filter:blur(10px);
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.play-btn{
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    border:none;
-    background:#16c4ff;
-    color:black;
-    font-size:30px;
-    cursor:pointer;
-}
-
-.track{
-    font-size:28px;
-    font-weight:800;
-}
-
-.live{
-    color:#16c4ff;
-    font-size:26px;
-    font-weight:900;
-}
-
-footer{
-    text-align:center;
-    padding:40px;
-    font-size:28px;
-    color:#16c4ff;
-    font-weight:900;
-    letter-spacing:4px;
-}
-
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
 <div class="bg"></div>
 <div class="shade"></div>
 
 <header class="topbar">
+  <a class="brand" href="#home">
+    <div class="coin">SM</div>
+    <div class="brand-script">SunMotion Radio</div>
+  </a>
 
-<div class="logo">
-SunMotion Radio
-</div>
-
-<nav class="nav">
-<a href="#">HOME</a>
-<a href="#">LISTEN LIVE</a>
-<a href="#">SHOWS</a>
-<a href="#">DJs</a>
-<a href="#">CHAT</a>
-<a href="#">PODCAST</a>
-<a href="#">NEWS</a>
-<a href="#">ABOUT</a>
-<a href="#">CONTACT</a>
-</nav>
-
+  <nav class="nav">
+    <a class="active" href="#home">HOME</a>
+    <a href="#listen-live">LISTEN LIVE</a>
+    <a href="#shows">SHOWS</a>
+    <a href="#djs">DJs</a>
+    <a href="#chat">CHAT</a>
+    <a href="#podcast">PODCAST</a>
+    <a href="#news">NEWS</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
 </header>
 
-<section class="hero">
+<main id="home" class="page active-page hero">
 
-<div class="logo-circle">
+  <div class="logo-mark">
+    <div class="sun">☀</div>
+    <div class="script">SunMotion</div>
+    <div class="radio">RADIO</div>
+    <div class="beat">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
 
-<div class="brand">
-SunMotion
-</div>
+  <div class="tagline">Live Music, good vibes & non-stop energy <span>♡</span></div>
 
-<div class="radio">
-RADIO
-</div>
+  <section class="player glass">
+    <button class="play" id="playBtn">▶</button>
 
-<div class="beat">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
+    <div>
+      <div class="label">NOW PLAYING</div>
+      <div class="track" id="trackTitle">SunMotion Radio Live</div>
+      <div class="station">SunMotion Radio Live</div>
+    </div>
 
-</div>
+    <div class="eq">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
 
-<div class="tagline">
-Live music, good vibes & non-stop energy ♡
-</div>
+    <div class="volume-wrap">
+      <span class="speaker">🔊</span>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8">
+    </div>
 
-<div class="player">
+    <div class="live-dot"><b></b> LIVE</div>
+  </section>
 
-<button class="play-btn">▶</button>
+  <div class="cards">
+    <a class="card" href="#listen-live"><span>🎧</span><b>LISTEN LIVE</b></a>
+    <a class="card" href="#chat"><span>💬</span><b>LIVE CHAT</b></a>
+    <a class="card" href="#djs"><span>🎙️</span><b>DJs</b></a>
+    <a class="card" href="#news"><span>📰</span><b>NEWS</b></a>
+  </div>
 
-<div class="track">
-SunMotion Radio Live
-</div>
+</main>
 
-<div class="live">
-● LIVE
-</div>
-
-</div>
-
-</section>
+<section id="listen-live" class="page inner empty"><h1>Listen Live</h1></section>
+<section id="shows" class="page inner empty"><h1>Shows</h1></section>
+<section id="djs" class="page inner empty"><h1>DJs</h1></section>
+<section id="chat" class="page inner empty"><h1>Chat</h1></section>
+<section id="podcast" class="page inner empty"><h1>Podcast</h1></section>
+<section id="news" class="page inner empty"><h1>News</h1></section>
+<section id="about" class="page inner empty"><h1>About</h1></section>
+<section id="contact" class="page inner empty"><h1>Contact</h1></section>
 
 <footer>
-📡 ON AIR 24/7
+  <div class="onair">🎙 ON AIR 24/7</div>
+  <small>© 2026 SunMotion Radio. All rights reserved.</small>
 </footer>
 
+<audio id="radioAudio" src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3"></audio>
+
+<script src="script.js"></script>
 </body>
 </html>
