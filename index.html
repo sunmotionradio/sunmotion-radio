@@ -1,94 +1,400 @@
-<!doctype html>
-<html lang="ro">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SunMotion Radio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SunMotion Radio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%;font-family:Montserrat,sans-serif;color:#fff;background:#02070c;overflow:hidden}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:url("assets/blue.png") center center/cover no-repeat;
+z-index:-3;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:
+linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,28,55,.35),rgba(0,0,0,.72)),
+radial-gradient(circle at 50% 32%,rgba(0,180,255,.25),transparent 42%);
+z-index:-2;
+}
+
+.topbar{
+height:74px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 30px;
+background:rgba(0,5,12,.78);
+border-bottom:1px solid rgba(0,190,255,.35);
+backdrop-filter:blur(10px);
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.coin{
+width:44px;
+height:44px;
+border-radius:50%;
+display:grid;
+place-items:center;
+border:1px solid #11bfff;
+background:radial-gradient(circle,#ffd84a 8%,#0d4b75 45%,#03101c 75%);
+font-size:13px;
+font-weight:900;
+box-shadow:0 0 20px rgba(0,180,255,.55);
+}
+
+.brand-name{
+font-family:"Great Vibes",cursive;
+font-size:38px;
+text-shadow:0 0 12px #000;
+}
+
+.nav{
+display:flex;
+gap:28px;
+}
+
+.nav a{
+color:#fff;
+text-decoration:none;
+font-size:13px;
+font-weight:900;
+letter-spacing:.03em;
+}
+
+.nav a:hover,.nav a.active{color:#15c9ff}
+
+.home{
+height:calc(100vh - 74px);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.logo-circle{
+width:390px;
+height:390px;
+border-radius:50%;
+border:3px solid #10c8ff;
+background:rgba(0,12,24,.34);
+box-shadow:0 0 48px rgba(0,190,255,.75), inset 0 0 45px rgba(0,150,255,.16);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+position:relative;
+margin-bottom:24px;
+}
+
+.sun{
+position:absolute;
+top:76px;
+font-size:42px;
+color:#ffd52c;
+filter:drop-shadow(0 0 10px #ffd52c);
+}
+
+.script{
+font-family:"Great Vibes",cursive;
+font-size:84px;
+line-height:.9;
+text-shadow:0 5px 18px #000;
+}
+
+.radio{
+font-size:42px;
+font-weight:900;
+letter-spacing:.22em;
+color:#14c7ff;
+text-shadow:0 0 18px #0dbdff;
+margin-left:18px;
+}
+
+.beat{
+display:flex;
+gap:6px;
+align-items:end;
+height:44px;
+margin-top:12px;
+}
+
+.beat span{
+width:10px;
+background:#14c7ff;
+box-shadow:0 0 12px #14c7ff;
+}
+
+.beat span:nth-child(1){height:12px}
+.beat span:nth-child(2){height:20px}
+.beat span:nth-child(3){height:30px}
+.beat span:nth-child(4){height:42px}
+.beat span:nth-child(5){height:30px}
+.beat span:nth-child(6){height:20px}
+.beat span:nth-child(7){height:12px}
+
+.tagline{
+font-size:20px;
+margin-bottom:30px;
+text-shadow:0 4px 14px #000;
+}
+
+.tagline span{color:#15c9ff;font-size:26px}
+
+.player{
+width:min(1030px,88vw);
+min-height:120px;
+border-radius:16px;
+background:rgba(0,13,27,.76);
+border:1px solid #10bfff;
+box-shadow:0 0 34px rgba(0,160,255,.34), inset 0 0 24px rgba(0,95,170,.18);
+backdrop-filter:blur(12px);
+display:grid;
+grid-template-columns:75px 1fr 170px 210px 90px;
+align-items:center;
+gap:22px;
+padding:26px 34px;
+}
+
+.play{
+width:62px;
+height:62px;
+border-radius:50%;
+border:1px solid #10bfff;
+background:rgba(0,45,80,.75);
+color:white;
+font-size:28px;
+cursor:pointer;
+box-shadow:0 0 22px rgba(0,190,255,.55);
+}
+
+.label{
+color:#14c7ff;
+font-size:13px;
+font-weight:900;
+letter-spacing:.15em;
+margin-bottom:8px;
+}
+
+.track{
+font-size:22px;
+font-weight:900;
+line-height:1.15;
+}
+
+.station{
+font-size:14px;
+color:#c7f0ff;
+margin-top:8px;
+}
+
+.eq{
+height:60px;
+display:flex;
+align-items:end;
+justify-content:center;
+gap:8px;
+}
+
+.eq i{
+width:9px;
+border-radius:10px;
+background:#13c7ff;
+box-shadow:0 0 15px #13c7ff;
+animation:bounce 1s ease-in-out infinite;
+}
+
+.eq i:nth-child(1){height:20px}
+.eq i:nth-child(2){height:34px}
+.eq i:nth-child(3){height:50px}
+.eq i:nth-child(4){height:58px}
+.eq i:nth-child(5){height:44px}
+.eq i:nth-child(6){height:31px}
+.eq i:nth-child(7){height:24px}
+
+@keyframes bounce{50%{height:18px;opacity:.6}}
+
+.volume{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+input[type=range]{
+width:140px;
+accent-color:#12c7ff;
+}
+
+.live{
+display:flex;
+align-items:center;
+gap:9px;
+font-size:18px;
+font-weight:900;
+color:#18caff;
+}
+
+.live b{
+width:13px;
+height:13px;
+border-radius:50%;
+background:#18caff;
+box-shadow:0 0 18px #18caff;
+}
+
+.quick{
+display:flex;
+gap:24px;
+margin-top:26px;
+}
+
+.quick a{
+width:210px;
+height:96px;
+border:1px solid rgba(0,190,255,.75);
+border-radius:14px;
+background:rgba(0,12,25,.66);
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+color:#14c7ff;
+font-weight:900;
+box-shadow:0 0 22px rgba(0,140,255,.22);
+backdrop-filter:blur(8px);
+}
+
+.footer{
+position:fixed;
+bottom:18px;
+left:0;
+width:100%;
+text-align:center;
+color:#18caff;
+font-size:24px;
+font-weight:900;
+letter-spacing:.22em;
+text-shadow:0 0 18px #0fb9ff;
+}
+
+@media(max-width:950px){
+.nav{gap:14px;flex-wrap:wrap;justify-content:center}
+.topbar{height:auto;padding:12px;flex-direction:column;gap:10px}
+.home{height:auto;min-height:100vh;padding-top:35px}
+.player{grid-template-columns:70px 1fr;gap:16px}
+.eq,.volume,.live{justify-self:start}
+.quick{flex-wrap:wrap;justify-content:center}
+.logo-circle{width:330px;height:330px}
+.script{font-size:62px}
+.radio{font-size:32px}
+.sun{top:64px}
+}
+</style>
 </head>
+
 <body>
-  <div class="bg"></div>
-  <div class="shade"></div>
 
-  <header class="topbar">
-    <a class="brand" href="#home" data-route="home" aria-label="SunMotion Radio Home">
-      <span class="coin">SM</span>
-      <span class="brand-script">SunMotionRadio</span>
-    </a>
-    <nav class="nav" aria-label="Main menu">
-      <a href="#home" data-route="home" class="active">HOME</a>
-      <a href="#listen-live" data-route="listen-live">LISTEN LIVE</a>
-      <a href="#shadows" data-route="shadows">SHADOWS</a>
-      <a href="#djs" data-route="djs">DJs</a>
-      <a href="https://xat.com/SunMotion_Radio" target="_blank" rel="noopener">CHAT</a>
-      <a href="#podcast" data-route="podcast">PODCAST</a>
-      <a href="#news" data-route="news">NEWS</a>
-      <a href="#about" data-route="about">ABOUT</a>
-      <a href="#contact" data-route="contact">CONTACT</a>
-    </nav>
-  </header>
+<header class="topbar">
+  <div class="brand">
+    <div class="coin">SM</div>
+    <div class="brand-name">SunMotion Radio</div>
+  </div>
 
-  <main>
-    <section id="page-home" class="page active-page hero">
-      <div class="logo-mark" aria-label="SunMotion Radio logo">
-        <div class="sun">☀</div>
-        <div class="script">SunMotion</div>
-        <div class="radio">RADIO</div>
-        <div class="beat"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-      </div>
+  <nav class="nav">
+    <a class="active" href="#">HOME</a>
+    <a href="#">LISTEN LIVE</a>
+    <a href="#">SHOWS</a>
+    <a href="#">DJs</a>
+    <a href="#">CHAT</a>
+    <a href="#">PODCAST</a>
+    <a href="#">NEWS</a>
+    <a href="#">ABOUT</a>
+    <a href="#">CONTACT</a>
+  </nav>
+</header>
 
-      <p class="tagline">Live Music, good vibes &amp; non-stop energy <span>♡</span></p>
+<main class="home">
 
-      <div class="player glass" id="mainPlayer">
-        <button class="play" id="playBtn" aria-label="Play radio"><span id="playIcon">▶</span></button>
-        <div class="trackbox">
-          <div class="label">NOW PLAYING</div>
-          <div class="track" id="trackTitle">Se încarcă piesa...</div>
-          <div class="station">SunMotion Radio Live</div>
-        </div>
-        <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="volume-wrap">
-          <span class="speaker">🔊</span>
-          <input type="range" id="volume" min="0" max="1" step="0.01" value="0.75" aria-label="Volume" />
-        </div>
-        <div class="live-dot"><b></b> LIVE</div>
-      </div>
+  <div class="logo-circle">
+    <div class="sun">☀</div>
+    <div class="script">SunMotion</div>
+    <div class="radio">RADIO</div>
+    <div class="beat">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
 
-      <div class="cards">
-        <a class="card" href="#listen-live" data-route="listen-live"><span>🎧</span><b>LISTEN LIVE</b></a>
-        <a class="card" href="https://xat.com/SunMotion_Radio" target="_blank" rel="noopener"><span>💬</span><b>LIVE CHAT</b></a>
-        <a class="card" href="#djs" data-route="djs"><span>🎙</span><b>DJs</b></a>
-        <a class="card" href="#news" data-route="news"><span>📰</span><b>NEWS</b></a>
-      </div>
-    </section>
+  <div class="tagline">Live Music, good vibes & non-stop energy <span>♡</span></div>
 
-    <section id="page-listen-live" class="page inner">
-      <h1>Listen Live</h1>
-      <div class="mini-player glass">
-        <button class="play small" id="playBtn2" aria-label="Play radio"><span id="playIcon2">▶</span></button>
-        <div><div class="label">NOW PLAYING</div><div class="track mini" id="trackTitle2">Se încarcă piesa...</div></div>
-        <div class="live-dot"><b></b> LIVE</div>
-      </div>
-    </section>
-    <section id="page-shadows" class="page inner empty"><h1>Shadows</h1></section>
-    <section id="page-djs" class="page inner empty"><h1>DJs</h1></section>
-    <section id="page-podcast" class="page inner empty"><h1>Podcast</h1></section>
-    <section id="page-news" class="page inner empty"><h1>News</h1></section>
-    <section id="page-about" class="page inner empty"><h1>About</h1></section>
-    <section id="page-contact" class="page inner empty"><h1>Contact</h1></section>
-  </main>
+  <section class="player">
+    <button class="play" id="playBtn">▶</button>
 
-  <footer>
-    <div class="onair">🎙 ON AIR 24/7</div>
-    <small>© 2026 SunMotion Radio. All rights reserved.</small>
-  </footer>
+    <div>
+      <div class="label">NOW PLAYING</div>
+      <div class="track" id="trackTitle">SunMotion Radio Live</div>
+      <div class="station">SunMotion Radio Live</div>
+    </div>
 
-  <audio id="radioAudio" preload="none" crossorigin="anonymous">
-    <source src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3" type="audio/mpeg" />
-  </audio>
-  <script src="script.js"></script>
+    <div class="eq">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="volume">
+      <span>🔊</span>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8">
+    </div>
+
+    <div class="live"><b></b> LIVE</div>
+  </section>
+
+  <div class="quick">
+    <a href="#">🎧 &nbsp; LISTEN LIVE</a>
+    <a href="#">💬 &nbsp; LIVE CHAT</a>
+    <a href="#">🎙️ &nbsp; DJs</a>
+    <a href="#">📰 &nbsp; NEWS</a>
+  </div>
+
+</main>
+
+<div class="footer">ON AIR 24/7</div>
+
+<audio id="radioAudio" src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3"></audio>
+
+<script>
+const audio = document.getElementById("radioAudio");
+const btn = document.getElementById("playBtn");
+const volume = document.getElementById("volume");
+
+btn.onclick = () => {
+  if (audio.paused) {
+    audio.play();
+    btn.textContent = "Ⅱ";
+  } else {
+    audio.pause();
+    btn.textContent = "▶";
+  }
+};
+
+volume.oninput = () => audio.volume = volume.value;
+audio.volume = 0.8;
+</script>
+
 </body>
 </html>
