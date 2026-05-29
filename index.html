@@ -10,17 +10,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
-width:100%;
-height:100%;
-font-family:Poppins,sans-serif;
-color:#fff;
-background:url("/assets/blue.png?v=50") center center/cover no-repeat fixed;
+width:100%;height:100%;
+font-family:Poppins,sans-serif;color:#fff;
+background:url("/assets/blue.png?v=77") center center/cover no-repeat fixed;
 overflow:hidden;
 }
 body:after{
-content:"";
-position:fixed;
-inset:0;
+content:"";position:fixed;inset:0;
 background:linear-gradient(180deg,rgba(0,0,0,.20),rgba(0,18,38,.40),rgba(0,0,0,.72));
 z-index:-1;
 }
@@ -60,16 +56,19 @@ display:flex;flex-direction:column;align-items:center;justify-content:center;pos
 
 .player{
 width:min(890px,84vw);min-height:98px;border-radius:15px;
-background:rgba(0,13,27,.76);border:1px solid #10bfff;
+background:linear-gradient(135deg,rgba(0,13,27,.82),rgba(0,20,40,.70));
+border:1px solid #10bfff;
 box-shadow:0 0 34px rgba(0,160,255,.34),inset 0 0 24px rgba(0,95,170,.18);
 backdrop-filter:blur(12px);
 display:grid;grid-template-columns:64px 1fr 135px 185px 80px;align-items:center;gap:18px;padding:20px 26px;
 }
 .play{
 width:54px;height:54px;border-radius:50%;border:1px solid #10bfff;
-background:rgba(0,45,80,.75);color:white;font-size:24px;cursor:pointer;
-box-shadow:0 0 22px rgba(0,190,255,.55)
+background:radial-gradient(circle,rgba(0,80,130,.95),rgba(0,25,48,.9));
+color:white;cursor:pointer;box-shadow:0 0 22px rgba(0,190,255,.55);
+display:flex;align-items:center;justify-content:center;
 }
+.play svg{width:22px;height:22px;fill:white;filter:drop-shadow(0 0 6px rgba(255,255,255,.45))}
 .label{color:#14c7ff;font-size:12px;font-weight:900;letter-spacing:.15em;margin-bottom:6px}
 .track{font-size:19px;font-weight:900;line-height:1.15}
 .station{font-size:13px;color:#c7f0ff;margin-top:6px}
@@ -102,8 +101,9 @@ box-shadow:0 0 28px rgba(0,160,255,.35);display:flex;align-items:center;gap:16px
 }
 .mini-play{
 width:46px;height:46px;border-radius:50%;border:1px solid #10bfff;
-background:rgba(0,45,80,.8);color:white;font-size:20px;cursor:pointer
+background:rgba(0,45,80,.8);color:white;cursor:pointer;display:flex;align-items:center;justify-content:center
 }
+.mini-play svg{width:18px;height:18px;fill:white}
 .mini-title{font-size:16px;font-weight:900}
 .mini-sub{font-size:12px;color:#bfeeff;margin-top:4px}
 .mini-live{margin-left:auto;color:#18caff;font-size:13px;font-weight:900}
@@ -153,7 +153,9 @@ html,body{overflow:auto}
   <div class="tagline">Live Music, good vibes & non-stop energy <span>♡</span></div>
 
   <section class="player">
-    <button class="play" id="playBtn">▶</button>
+    <button class="play" id="playBtn" aria-label="Play">
+      <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+    </button>
     <div>
       <div class="label">NOW PLAYING</div>
       <div class="track" id="trackTitle">SunMotion Radio Live</div>
@@ -174,7 +176,9 @@ html,body{overflow:auto}
 
 <section id="listen" class="page listen-page">
   <div class="listen-box">
-    <button class="mini-play" id="miniPlayBtn">▶</button>
+    <button class="mini-play" id="miniPlayBtn" aria-label="Play">
+      <svg viewBox="0 0 24 24" id="miniPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+    </button>
     <div>
       <div class="mini-title">SunMotion Radio Live</div>
       <div class="mini-sub" id="miniTrackTitle">SunMotion Radio Live</div>
@@ -197,12 +201,17 @@ const miniBtn=document.getElementById("miniPlayBtn");
 const volume=document.getElementById("volume");
 const trackTitle=document.getElementById("trackTitle");
 const miniTrackTitle=document.getElementById("miniTrackTitle");
+const playIcon=document.getElementById("playIcon");
+const miniPlayIcon=document.getElementById("miniPlayIcon");
+
+const playSVG='<path d="M8 5v14l11-7z"/>';
+const pauseSVG='<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>';
 
 audio.volume=0.8;
 
 function setButtons(isPlaying){
-  btn.textContent=isPlaying?"Ⅱ":"▶";
-  miniBtn.textContent=isPlaying?"Ⅱ":"▶";
+  playIcon.innerHTML=isPlaying?pauseSVG:playSVG;
+  miniPlayIcon.innerHTML=isPlaying?pauseSVG:playSVG;
 }
 
 function toggleRadio(){
