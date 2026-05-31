@@ -6,7 +6,7 @@
   <title>SunMotion Radio</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800;900&display=swap');
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -17,7 +17,7 @@
       overflow-x: hidden;
       cursor: none;
       background:
-        linear-gradient(90deg, rgba(2,6,18,.88) 0%, rgba(2,6,18,.55) 45%, rgba(2,6,18,.35) 100%),
+        linear-gradient(90deg, rgba(2,6,18,.90) 0%, rgba(2,6,18,.66) 42%, rgba(2,6,18,.34) 100%),
         url("assets/IMG_00000009.png");
       background-size: cover;
       background-position: center top;
@@ -59,9 +59,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(2, 6, 18, .9);
+      background: rgba(2, 6, 18, .92);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(0, 220, 255, .25);
+      border-bottom: 1px solid rgba(0, 220, 255, .24);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -100,135 +100,89 @@
     }
 
     nav a:hover,
-    nav a.active {
-      color: #24e9ff;
-    }
+    nav a.active { color: #24e9ff; }
 
     .hero {
       min-height: calc(100vh - 78px);
-      padding: 105px 7% 65px;
+      padding: 96px 7% 55px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .hero-content {
-      max-width: 690px;
-      padding: 42px;
-      border-radius: 32px;
-      background: rgba(3, 9, 27, .74);
-      border: 1px solid rgba(255,255,255,.12);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 55px rgba(0, 210, 255, .13);
+    .hero-card {
+      width: min(570px, 100%);
+      padding: 38px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(36,233,255,.10), transparent 34%),
+        rgba(3, 9, 27, .76);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(16px);
+      box-shadow:
+        0 0 55px rgba(0, 210, 255, .13),
+        inset 0 0 35px rgba(255,255,255,.025);
     }
 
     .tag {
       color: #25e7ff;
       font-weight: 900;
       letter-spacing: 3px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       font-size: 13px;
     }
 
-    .music-badge {
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 26px;
-      padding: 24px 26px;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 22% 35%, rgba(36,233,255,.22), transparent 34%),
-        radial-gradient(circle at 88% 15%, rgba(181,108,255,.18), transparent 30%),
-        linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
-      border: 1px solid rgba(36,233,255,.36);
-      box-shadow:
-        0 0 34px rgba(36,233,255,.15),
-        inset 0 0 30px rgba(181,108,255,.08);
-    }
-
-    .music-badge::after {
-      content: "";
-      position: absolute;
-      right: -44px;
-      bottom: -50px;
-      width: 150px;
-      height: 150px;
+    .hero-symbol {
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(36,233,255,.16), transparent 68%);
-    }
-
-    .badge-circle {
-      width: 116px;
-      height: 116px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      position: relative;
+      margin-bottom: 22px;
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle, rgba(36,233,255,.20), rgba(181,108,255,.11) 55%, rgba(255,255,255,.03));
-      border: 1px solid rgba(36,233,255,.58);
+        radial-gradient(circle, rgba(36,233,255,.24), rgba(181,108,255,.10) 60%, rgba(255,255,255,.02));
+      border: 1px solid rgba(36,233,255,.55);
       box-shadow:
-        0 0 26px rgba(36,233,255,.28),
+        0 0 26px rgba(36,233,255,.25),
         inset 0 0 22px rgba(255,255,255,.08);
+      font-size: 42px;
     }
 
-    .badge-circle::before {
-      content: "🎧";
-      position: absolute;
-      top: 19px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 43px;
-      filter: drop-shadow(0 0 16px rgba(36,233,255,.65));
+    .hero-kicker {
+      font-size: 13px;
+      font-weight: 900;
+      color: #22eaff;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
     }
 
-    .badge-circle::after {
-      content: "▮▮▮▮▮";
-      position: absolute;
-      bottom: 23px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 18px;
-      letter-spacing: 3px;
-      color: #25e7ff;
-      text-shadow: 0 0 14px rgba(36,233,255,.75);
+    .hero-title {
+      font-size: clamp(36px, 4.5vw, 58px);
+      line-height: 1.05;
+      font-weight: 900;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
     }
 
-    .badge-text {
-      position: relative;
-      z-index: 1;
-    }
-
-    .badge-text span {
+    .hero-title span {
       display: block;
-      font-size: 15px;
-      color: #dbe8ff;
-      letter-spacing: .8px;
-      margin-bottom: 7px;
+      background: linear-gradient(90deg, #ffffff, #8eeeff, #b56cff);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(36,233,255,.12);
     }
 
-    .badge-text strong {
-      display: block;
-      font-size: 25px;
-      line-height: 1.16;
-      color: #ffffff;
-      text-shadow:
-        0 0 12px rgba(36,233,255,.55),
-        0 0 24px rgba(181,108,255,.22);
-    }
-
-    .hero p {
-      max-width: 560px;
+    .hero-desc {
+      max-width: 520px;
       color: #e7edff;
-      font-size: 21px;
-      line-height: 1.5;
-      margin-bottom: 30px;
+      font-size: 20px;
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+
+    .hero-desc .heart {
+      color: #ff7de3;
+      text-shadow: 0 0 12px rgba(255,125,227,.65);
     }
 
     .buttons {
@@ -247,7 +201,10 @@
       background: rgba(255,255,255,.07);
       font-weight: 900;
       letter-spacing: .5px;
+      transition: .25s;
     }
+
+    .btn:hover { transform: translateY(-2px); }
 
     .btn.primary {
       color: #05111e;
@@ -264,7 +221,7 @@
       display: flex;
       align-items: center;
       gap: 22px;
-      background: rgba(3, 10, 28, .9);
+      background: rgba(3, 10, 28, .91);
       border: 1px solid rgba(35, 230, 255, .72);
       box-shadow: 0 0 50px rgba(0, 210, 255, .20);
       backdrop-filter: blur(20px);
@@ -284,10 +241,7 @@
       flex-shrink: 0;
     }
 
-    .player-info {
-      flex: 1;
-      min-width: 0;
-    }
+    .player-info { flex: 1; min-width: 0; }
 
     .player-info small {
       color: #22e5ff;
@@ -332,7 +286,7 @@
     .equalizer span:nth-child(5) { height: 34px; animation-delay: .5s; }
 
     @keyframes wave {
-      50% { transform: scaleY(.45); opacity: .75; }
+      50% { transform: scaleY(.45); opacity:.75; }
     }
 
     .live-dot {
@@ -382,10 +336,7 @@
       box-shadow: 0 0 35px rgba(0,0,0,.25);
     }
 
-    .news-list {
-      display: grid;
-      gap: 13px;
-    }
+    .news-list { display: grid; gap: 13px; }
 
     .news-item {
       display: grid;
@@ -410,7 +361,7 @@
       border-radius: 14px;
       background:
         linear-gradient(135deg, rgba(34,234,255,.7), rgba(174,92,255,.6)),
-        url("assets/IMG_000003.png");
+        url("assets/IMG_00000009.png");
       background-size: cover;
       background-position: center;
       overflow: hidden;
@@ -471,10 +422,7 @@
       box-shadow: 0 0 35px rgba(0,210,255,.18);
     }
 
-    .icon {
-      font-size: 40px;
-      margin-bottom: 18px;
-    }
+    .icon { font-size: 40px; margin-bottom: 18px; }
 
     .feature-card h3 {
       color: #22e5ff;
@@ -494,7 +442,7 @@
       padding: 36px;
       background:
         linear-gradient(90deg, rgba(145, 44, 200, .44), rgba(0, 185, 255, .30)),
-        url("assets/IMG_000003.png");
+        url("assets/IMG_00000009.png");
       background-size: cover;
       background-position: center;
       border: 1px solid rgba(35, 230, 255, .38);
@@ -544,9 +492,7 @@
       backdrop-filter: blur(10px);
     }
 
-    .chat-modal.active {
-      display: flex;
-    }
+    .chat-modal.active { display: flex; }
 
     .chat-box {
       width: min(1200px, 96vw);
@@ -618,48 +564,13 @@
 
       .logo { font-size: 24px; }
       .hero { padding: 55px 5%; }
-      .hero-content { padding: 25px; }
-      .music-badge {
-        max-width: 100%;
-        padding: 20px;
-        gap: 16px;
-      }
-
-      .badge-circle {
-        width: 90px;
-        height: 90px;
-      }
-
-      .badge-circle::before {
-        font-size: 34px;
-        top: 15px;
-      }
-
-      .badge-circle::after {
-        font-size: 14px;
-        bottom: 18px;
-      }
-
-      .badge-text strong {
-        font-size: 20px;
-      }
+      .hero-card { padding: 25px; }
       .player { flex-wrap: wrap; }
       .equalizer { display: none; }
       .cards { grid-template-columns: 1fr; }
-
-      .community {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .chat-modal {
-        padding: 12px;
-      }
-
-      .chat-box {
-        width: 100%;
-        height: 86vh;
-      }
+      .community { flex-direction: column; align-items: flex-start; }
+      .chat-modal { padding: 12px; }
+      .chat-box { width: 100%; height: 86vh; }
     }
   </style>
 </head>
@@ -686,18 +597,19 @@
 </header>
 
 <main id="home" class="hero">
-  <div class="hero-content">
+  <div class="hero-card">
     <div class="tag">LIVE 24/7</div>
 
-    <div class="music-badge">
-      <div class="badge-circle"></div>
-      <div class="badge-text">
-        <span>All your favorite music,</span>
-        <strong>now on one Station</strong>
-      </div>
+    <div class="hero-symbol">🎚️</div>
+
+    <div class="hero-kicker">SUNMOTION RADIO</div>
+
+    <div class="hero-title">
+      All your favorite music,
+      <span>now on one station.</span>
     </div>
 
-    <p>Live music, good vibes & non-stop hits. ♡</p>
+    <p class="hero-desc">Live music, good vibes & non-stop hits. <span class="heart">♡</span></p>
 
     <div class="buttons">
       <a class="btn primary" href="#playerSection">LISTEN LIVE</a>
@@ -945,7 +857,7 @@
     }
 
     newsList.innerHTML = allItems.map((item, index) => {
-      const image = item.thumbnail || item.enclosure?.link || "assets/IMG_000003.png";
+      const image = item.thumbnail || item.enclosure?.link || "assets/IMG_00000009.png";
 
       const category =
         index % 4 === 0 ? "MUSIC NEWS" :
