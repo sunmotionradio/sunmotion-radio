@@ -177,6 +177,7 @@ nav a:hover,nav a.active{color:#ffd27a}
   background:rgba(0,0,0,.24);
   border:1px solid rgba(255,210,122,.22);
   box-shadow:inset 0 0 22px rgba(255,255,255,.025);
+  scroll-margin-top:120px;
 }
 
 .play-btn{
@@ -516,14 +517,14 @@ footer{
 
   <nav>
     <a href="#home" class="active">HOME</a>
-    <a href="#playerSection">LISTEN LIVE</a>
+    <a href="#" onclick="scrollToPlayer(event)">LISTEN LIVE</a>
     <a href="#" onclick="openInfo(event,'SHOWS','Shows section coming soon.')">SHOWS</a>
     <a href="#" onclick="openInfo(event,'DJs','SunMotion Radio DJs section coming soon.')">DJs</a>
     <a href="#" onclick="openChat(event)">CHAT</a>
     <a href="#" onclick="openInfo(event,'PODCAST','Podcast section coming soon.')">PODCAST</a>
     <a href="#news">NEWS</a>
     <a href="#" onclick="openInfo(event,'ABOUT','SunMotion Radio is your place for live music, good vibes and non-stop hits. A fresh online radio experience created for music lovers, with energy, emotion and community.')">ABOUT</a>
-    <a href="#" onclick="openInfo(event,'CONTACT','For messages, collaborations or radio requests: sunmotionradio@gmail.com')">CONTACT</a>
+    <a href="#" onclick="openInfo(event,'CONTACT','sunmotionradio@gmail.com')">CONTACT</a>
   </nav>
 </header>
 
@@ -579,10 +580,10 @@ footer{
     </aside>
 
     <div>
-      <h2 class="section-title">FEEL THE SOUND</h2>
+      <h2 class="section-title">MUZICA DIN SUFLET PENTRU SUFLET</h2>
 
       <div class="cards">
-        <a href="#playerSection" class="feature-card">
+        <a href="#" onclick="scrollToPlayer(event)" class="feature-card">
           <div class="icon">🎧</div>
           <h3>LIVE STREAM</h3>
           <p>Ascultă SunMotion Radio 24/7, direct de pe site.</p>
@@ -647,6 +648,19 @@ radio.volume=volumeSlider.value;
 volumeSlider.addEventListener("input",function(){
   radio.volume=this.value;
 });
+
+function scrollToPlayer(event){
+  if(event) event.preventDefault();
+
+  const player=document.getElementById("playerSection");
+  const headerOffset=95;
+  const y=player.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+  window.scrollTo({
+    top:y,
+    behavior:"smooth"
+  });
+}
 
 function toggleRadio(){
   if(radio.paused){
