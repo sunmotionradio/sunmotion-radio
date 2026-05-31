@@ -59,31 +59,20 @@ flex-direction:column;
 align-items:center;
 padding:32px 20px 80px;
 }
-.hero-logo{
-display:flex;
-justify-content:center;
-align-items:center;
-margin-bottom:18px;
+.logo-circle{
+width:300px;height:300px;border-radius:50%;
+border:3px solid #10c8ff;
+background:rgba(0,10,22,.36);
+box-shadow:0 0 46px rgba(0,190,255,.76),inset 0 0 42px rgba(0,160,255,.15);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+position:relative;margin-bottom:16px;
 }
-
-.hero-logo img{
-width:340px;
-max-width:82vw;
-height:auto;
-display:block;
-border-radius:50%;
-filter:
-drop-shadow(0 0 18px rgba(0,191,255,.55))
-drop-shadow(0 0 38px rgba(0,191,255,.28));
-transition:transform .3s ease, filter .3s ease;
-}
-
-.hero-logo img:hover{
-transform:scale(1.03);
-filter:
-drop-shadow(0 0 24px rgba(0,191,255,.75))
-drop-shadow(0 0 48px rgba(0,191,255,.38));
-}
+.sun{position:absolute;top:55px;font-size:34px;color:#ffd52c;filter:drop-shadow(0 0 10px #ffd52c)}
+.script{font-family:"Great Vibes",cursive;font-size:64px;line-height:.9;text-shadow:0 5px 18px #000}
+.radio{font-size:32px;font-weight:900;letter-spacing:.22em;color:#14c7ff;text-shadow:0 0 18px #0dbdff;margin-left:16px}
+.beat{display:flex;gap:5px;align-items:end;height:34px;margin-top:9px}
+.beat span{width:8px;background:#14c7ff;box-shadow:0 0 12px #14c7ff}
+.beat span:nth-child(1){height:9px}.beat span:nth-child(2){height:15px}.beat span:nth-child(3){height:24px}.beat span:nth-child(4){height:34px}.beat span:nth-child(5){height:24px}.beat span:nth-child(6){height:15px}.beat span:nth-child(7){height:9px}
 .tagline{font-size:17px;margin-bottom:20px;text-shadow:0 4px 14px #000}.tagline span{color:#15c9ff;font-size:23px}
 
 .player{
@@ -361,8 +350,11 @@ text-shadow:0 0 20px #009cff;
 </header>
 
 <main id="home" class="page home active">
-  <div class="hero-logo">
-    <img src="./assets/LOGO RADIO.png" alt="SunMotion Radio">
+  <div class="logo-circle">
+    <div class="sun">☀</div>
+    <div class="script">SunMotion</div>
+    <div class="radio">RADIO</div>
+    <div class="beat"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
   </div>
 
   <div class="tagline">Live Music, good vibes & non-stop Hits<span>♡</span></div>
@@ -438,7 +430,7 @@ text-shadow:0 0 20px #009cff;
 <section id="djs" class="page blank-page"><h1>DJs</h1></section>
 <section id="podcast" class="page blank-page"><h1>Podcast</h1></section>
 <section id="contact" class="page blank-page">
-    <h1>Contact</h1>
+    <h1>𝕮𝖔𝖓𝖙𝖆𝖈𝖙</h1>
 
     <p>Gmail: 
         <a href="mailto:sunmotionradio@gmail.com">
