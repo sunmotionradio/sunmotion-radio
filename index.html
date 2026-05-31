@@ -145,6 +145,7 @@
       filter:
         drop-shadow(0 0 12px rgba(255,210,122,.35))
         drop-shadow(0 0 18px rgba(36,233,255,.20));
+      flex-shrink: 0;
     }
 
     .hero-mini-logo img {
@@ -154,22 +155,23 @@
 
     .hero-name {
       font-family: 'Great Vibes', cursive;
-      font-size: 62px;
+      font-size: 50px;
       line-height: .9;
-      margin-top: 10px;
-      letter-spacing: 1px;
+      margin-top: 8px;
+      letter-spacing: .5px;
       background: linear-gradient(90deg, #ffffff 0%, #ffe29b 38%, #7defff 76%, #ffffff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-shadow:
-        0 0 10px rgba(255,226,155,.35),
-        0 0 20px rgba(125,239,255,.20);
+        0 0 10px rgba(255,226,155,.28),
+        0 0 18px rgba(125,239,255,.16);
+      white-space: nowrap;
     }
 
     .hero-title {
-      font-size: clamp(34px, 4.1vw, 54px);
-      line-height: 1.06;
+      font-size: clamp(30px, 3.6vw, 46px);
+      line-height: 1.08;
       font-weight: 900;
       margin-bottom: 18px;
       letter-spacing: -1px;
@@ -244,29 +246,29 @@
       font-size: 13px;
     }
 
-    .equalizer {
-      display: flex;
-      align-items: end;
-      gap: 4px;
-      height: 34px;
+    .sound-line {
+      width: 78px;
+      height: 2px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, transparent, #ffd27a, #24e9ff, transparent);
+      box-shadow:
+        0 0 12px rgba(255,210,122,.60),
+        0 0 18px rgba(36,233,255,.35);
+      flex-shrink: 0;
+      position: relative;
     }
 
-    .equalizer span {
-      width: 5px;
-      border-radius: 10px;
-      background: linear-gradient(#ffd27a, #24e9ff);
-      box-shadow: 0 0 10px rgba(255,210,122,.38);
-      animation: wave 1s infinite ease-in-out;
-    }
-
-    .equalizer span:nth-child(1) { height: 14px; animation-delay: .1s; }
-    .equalizer span:nth-child(2) { height: 25px; animation-delay: .2s; }
-    .equalizer span:nth-child(3) { height: 34px; animation-delay: .3s; }
-    .equalizer span:nth-child(4) { height: 21px; animation-delay: .4s; }
-    .equalizer span:nth-child(5) { height: 29px; animation-delay: .5s; }
-
-    @keyframes wave {
-      50% { transform: scaleY(.45); opacity:.75; }
+    .sound-line::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: #ffd27a;
+      box-shadow: 0 0 14px rgba(255,210,122,.85);
     }
 
     .buttons {
@@ -294,25 +296,6 @@
       color: #06111e;
       background: linear-gradient(90deg, #ffd27a, #24e9ff);
       box-shadow: 0 0 28px rgba(255, 210, 122, .25);
-    }
-
-    .live-dot {
-      color: #ffd27a;
-      font-weight: 900;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 13px;
-    }
-
-    .live-dot::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ff33d7;
-      box-shadow: 0 0 16px #ff33d7;
     }
 
     audio { display: none; }
@@ -575,9 +558,9 @@
       .hero-card { padding: 25px; }
       .hero-logo-line { align-items: center; }
       .hero-mini-logo { width: 66px; }
-      .hero-name { font-size: 44px; margin-top: 8px; }
+      .hero-name { font-size: 40px; margin-top: 8px; }
       .mini-player { flex-wrap: wrap; }
-      .equalizer { display: none; }
+      .sound-line { width: 100%; margin-left: 72px; }
       .cards { grid-template-columns: 1fr; }
       .community { flex-direction: column; align-items: flex-start; }
       .chat-modal { padding: 12px; }
@@ -637,11 +620,7 @@
         <p>SunMotion Radio Live</p>
       </div>
 
-      <div class="equalizer" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-
-      <div class="live-dot">LIVE</div>
+      <div class="sound-line" aria-hidden="true"></div>
 
       <audio id="radio">
         <source src="https://sunmotionradioonline.duckdns.org/listen/sunmotionradio/radio.mp3" type="audio/mpeg">
