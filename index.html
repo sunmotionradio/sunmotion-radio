@@ -128,32 +128,23 @@
       color: #25e7ff;
       font-weight: 900;
       letter-spacing: 3px;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       font-size: 13px;
     }
 
     .hero-symbol {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      margin-bottom: 22px;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle, rgba(36,233,255,.24), rgba(181,108,255,.10) 60%, rgba(255,255,255,.02));
-      border: 1px solid rgba(36,233,255,.55);
-      box-shadow:
-        0 0 26px rgba(36,233,255,.25),
-        inset 0 0 22px rgba(255,255,255,.08);
-      font-size: 42px;
+      width: 245px;
+      max-width: 88%;
+      margin: -4px 0 18px -8px;
+      filter:
+        drop-shadow(0 0 14px rgba(255,190,45,.35))
+        drop-shadow(0 0 26px rgba(36,233,255,.24));
     }
 
-    .hero-kicker {
-      font-size: 13px;
-      font-weight: 900;
-      color: #22eaff;
-      letter-spacing: 4px;
-      margin-bottom: 12px;
+    .hero-symbol img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .hero-title {
@@ -565,6 +556,7 @@
       .logo { font-size: 24px; }
       .hero { padding: 55px 5%; }
       .hero-card { padding: 25px; }
+      .hero-symbol { width: 210px; }
       .player { flex-wrap: wrap; }
       .equalizer { display: none; }
       .cards { grid-template-columns: 1fr; }
@@ -600,9 +592,9 @@
   <div class="hero-card">
     <div class="tag">LIVE 24/7</div>
 
-    <div class="hero-symbol">🎚️</div>
-
-    <div class="hero-kicker">SUNMOTION RADIO</div>
+    <div class="hero-symbol">
+      <img src="assets/Logo3.png" alt="SunMotion Radio">
+    </div>
 
     <div class="hero-title">
       All your favorite music,
