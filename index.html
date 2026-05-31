@@ -6,13 +6,16 @@
   <title>SunMotion Radio</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700;800;900&display=swap');
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', Arial, sans-serif;
       color: #fff;
       overflow-x: hidden;
+      cursor: none;
       background:
         linear-gradient(90deg, rgba(2,6,18,.88) 0%, rgba(2,6,18,.55) 45%, rgba(2,6,18,.35) 100%),
         url("assets/IMG_000003.png");
@@ -22,7 +25,33 @@
       background-attachment: fixed;
     }
 
+    a, button { cursor: none; }
     a { color: inherit; text-decoration: none; }
+
+    .cursor-dot {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #24e9ff;
+      box-shadow: 0 0 18px #24e9ff, 0 0 34px #b56cff;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(36,233,255,.75);
+      box-shadow: 0 0 24px rgba(181,108,255,.55);
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: .12s ease;
+    }
 
     header {
       height: 78px;
@@ -84,8 +113,8 @@
     }
 
     .hero-content {
-      max-width: 660px;
-      padding: 38px;
+      max-width: 690px;
+      padding: 42px;
       border-radius: 32px;
       background: rgba(3, 9, 27, .74);
       border: 1px solid rgba(255,255,255,.12);
@@ -102,16 +131,39 @@
     }
 
     h1 {
-      font-size: clamp(58px, 8vw, 108px);
-      line-height: .88;
       margin-bottom: 24px;
+      line-height: .86;
     }
 
-    h1 span {
+    .brand-script {
       display: block;
-      background: linear-gradient(90deg, #18e9ff, #ae66ff);
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(78px, 9vw, 132px);
+      font-weight: 400;
+      color: #ffffff;
+      text-shadow:
+        0 0 10px rgba(255,255,255,.55),
+        0 0 25px rgba(36,233,255,.50),
+        0 0 45px rgba(181,108,255,.35);
+    }
+
+    .brand-radio {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(58px, 7vw, 96px);
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #22eaff, #67b7ff, #b56cff, #22eaff);
+      background-size: 240% auto;
       -webkit-background-clip: text;
       color: transparent;
+      text-shadow: 0 0 30px rgba(36,233,255,.25);
+      animation: shineText 4s linear infinite;
+    }
+
+    @keyframes shineText {
+      0% { background-position: 0% center; }
+      100% { background-position: 240% center; }
     }
 
     .hero p {
@@ -170,7 +222,7 @@
       background: rgba(0, 207, 255, .14);
       color: #fff;
       font-size: 22px;
-      cursor: pointer;
+      cursor: none;
       box-shadow: 0 0 25px rgba(36,230,255,.35);
       flex-shrink: 0;
     }
@@ -405,15 +457,6 @@
     .community h2 { margin: 8px 0; }
     .community p { color: #dce7ff; }
 
-    #chat iframe {
-      width: 100%;
-      height: 620px;
-      border: 0;
-      border-radius: 22px;
-      background: #000;
-      overflow: hidden;
-    }
-
     .about-contact {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -430,6 +473,56 @@
       font-size: 22px;
       font-weight: 900;
       word-break: break-word;
+    }
+
+    .chat-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 35px;
+      background: rgba(0, 0, 0, .78);
+      backdrop-filter: blur(10px);
+    }
+
+    .chat-modal.active {
+      display: flex;
+    }
+
+    .chat-box {
+      width: min(1200px, 96vw);
+      height: min(720px, 88vh);
+      border-radius: 26px;
+      padding: 18px;
+      background: rgba(5, 12, 32, .94);
+      border: 1px solid rgba(35, 230, 255, .45);
+      box-shadow: 0 0 60px rgba(0, 210, 255, .22);
+      position: relative;
+    }
+
+    .close-chat {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(35, 230, 255, .8);
+      background: rgba(3, 10, 28, .95);
+      color: #fff;
+      font-size: 24px;
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(35, 230, 255, .45);
+    }
+
+    .chat-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 18px;
+      background: #000;
     }
 
     footer {
@@ -450,7 +543,9 @@
     }
 
     @media (max-width: 700px) {
-      body { background-attachment: scroll; }
+      body { background-attachment: scroll; cursor: auto; }
+      a, button { cursor: pointer; }
+      .cursor-dot, .cursor-ring { display: none; }
 
       header {
         height: auto;
@@ -467,6 +562,8 @@
       .logo { font-size: 24px; }
       .hero { padding: 55px 5%; }
       .hero-content { padding: 25px; }
+      .brand-script { font-size: 72px; }
+      .brand-radio { font-size: 56px; }
       .player { flex-wrap: wrap; }
       .equalizer { display: none; }
       .cards { grid-template-columns: 1fr; }
@@ -475,11 +572,23 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .chat-modal {
+        padding: 12px;
+      }
+
+      .chat-box {
+        width: 100%;
+        height: 86vh;
+      }
     }
   </style>
 </head>
 
 <body>
+
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
 
 <header>
   <div class="logo"><span>SM</span> SunMotion Radio</div>
@@ -489,7 +598,7 @@
     <a href="#playerSection">LISTEN LIVE</a>
     <a href="#shows">SHOWS</a>
     <a href="#djs">DJs</a>
-    <a href="#chat">CHAT</a>
+    <a href="#" onclick="openChat(event)">CHAT</a>
     <a href="#podcast">PODCAST</a>
     <a href="#news">NEWS</a>
     <a href="#about">ABOUT</a>
@@ -500,12 +609,17 @@
 <main id="home" class="hero">
   <div class="hero-content">
     <div class="tag">LIVE 24/7</div>
-    <h1>SunMotion <span>Radio</span></h1>
+
+    <h1>
+      <span class="brand-script">SunMotion</span>
+      <span class="brand-radio">RADIO</span>
+    </h1>
+
     <p>Live music, good vibes & non-stop hits. Sunet fresh, energie bună și vibe non-stop.</p>
 
     <div class="buttons">
       <a class="btn primary" href="#playerSection">LISTEN LIVE</a>
-      <a class="btn" href="#chat">LIVE CHAT</a>
+      <a class="btn" href="#" onclick="openChat(event)">LIVE CHAT</a>
     </div>
   </div>
 
@@ -550,7 +664,7 @@
           <p>Ascultă SunMotion Radio 24/7, direct de pe site.</p>
         </a>
 
-        <a href="#chat" class="feature-card">
+        <a href="#" onclick="openChat(event)" class="feature-card">
           <div class="icon">💬</div>
           <h3>LIVE CHAT</h3>
           <p>Intră pe chat și stai aproape de comunitate.</p>
@@ -576,18 +690,10 @@
           <p>Ascultă, intră pe chat și rămâi aproape de vibe.</p>
         </div>
 
-        <a class="btn primary" href="#chat">JOIN CHAT</a>
+        <a class="btn primary" href="#" onclick="openChat(event)">JOIN CHAT</a>
       </div>
     </div>
 
-  </div>
-</section>
-
-<section id="chat">
-  <h2 class="section-title">LIVE CHAT</h2>
-
-  <div class="panel">
-    <iframe src="https://xat.com/embed/chat.php#id=220529440&gn=sunmotion_radio"></iframe>
   </div>
 </section>
 
@@ -624,6 +730,13 @@
     </a>
   </div>
 </section>
+
+<div class="chat-modal" id="chatModal">
+  <div class="chat-box">
+    <button class="close-chat" onclick="closeChat()">×</button>
+    <iframe src="https://xat.com/embed/chat.php#id=220529440&gn=sunmotion_radio"></iframe>
+  </div>
+</div>
 
 <footer>
   📡 ON AIR 24/7
@@ -663,6 +776,51 @@
 
   updateNowPlaying();
   setInterval(updateNowPlaying, 20000);
+
+  function openChat(event) {
+    if (event) event.preventDefault();
+    document.getElementById("chatModal").classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeChat() {
+    document.getElementById("chatModal").classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeChat();
+  });
+
+  document.getElementById("chatModal").addEventListener("click", function(e) {
+    if (e.target.id === "chatModal") closeChat();
+  });
+
+  const dot = document.querySelector(".cursor-dot");
+  const ring = document.querySelector(".cursor-ring");
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener("mousemove", function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    dot.style.left = mouseX + "px";
+    dot.style.top = mouseY + "px";
+  });
+
+  function animateCursor() {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+
+    ring.style.left = ringX + "px";
+    ring.style.top = ringY + "px";
+
+    requestAnimationFrame(animateCursor);
+  }
+
+  animateCursor();
 
   const rssFeeds = [
     { url: "https://www.infomusic.ro/feed/" },
