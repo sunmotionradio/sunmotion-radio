@@ -105,16 +105,31 @@ nav a:hover,nav a.active{color:#ffd27a}
   white-space:nowrap;
 }
 .hero-radio{
+  margin-top:-4px;
   text-align:center;
-  margin-top:4px;
-  font-size:24px;
-  font-weight:900;
-  letter-spacing:12px;
-  color:#24e9ff;
+
+  font-family:'Parisienne',cursive;
+
+  font-size:34px;
+  font-weight:400;
+
+  background:linear-gradient(
+    90deg,
+    #ffffff,
+    #8ff6ff,
+    #24e9ff,
+    #ffffff
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
   text-shadow:
-      0 0 8px rgba(36,233,255,.9),
-      0 0 18px rgba(36,233,255,.7),
-      0 0 35px rgba(36,233,255,.4);
+      0 0 12px rgba(36,233,255,.55),
+      0 0 25px rgba(36,233,255,.35);
+
+  transform:rotate(-2deg);
+}
 }
 .hero-title{
   font-size:clamp(28px,3.1vw,40px);
